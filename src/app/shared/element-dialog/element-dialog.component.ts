@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,Inject, OnInit } from '@angular/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {Task} from 'src/app/views/home/home.component';
 
 @Component({
   selector: 'app-element-dialog',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ElementDialogComponent implements OnInit {
 
-  constructor() { }
+  element!: Task;
+
+  constructor(
+    // Injetando o valor dentro do modal
+    @Inject(MAT_DIALOG_DATA) 
+    public data: Task,  // PeriodicElement -> Task
+    public dialogRef: MatDialogRef<ElementDialogComponent>,
+  ) {}
 
   ngOnInit(): void {
+  }
+
+  onCancel(): void {
+    this.dialogRef.close();
   }
 
 }
