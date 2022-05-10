@@ -6,3 +6,29 @@ table {
     padding: 50px 100px;
     background-color: #424242;
 }
+
+.mat-elevation-z8 {
+    background-color: #424242;
+}
+
+th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+    color: #ffffff;
+}
+
+.mat-button.mat-primary {
+    color: #ffffff;
+    background-color: #4554a8;
+    margin: 0px 0px 10px 0px;
+    transition: 200ms;
+}
+
+
+.mat-button.mat-primary:hover {
+    box-shadow: 0px 2px 10px #2121218c;
+}
+/*
+.mat-button.mat-primary:hover {
+    background-color: #2faf2f;
+    box-shadow: 0px 2px 10px #212121;
+    transition: 400ms;
+}*/
