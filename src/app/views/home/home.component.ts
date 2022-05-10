@@ -55,14 +55,27 @@ export class HomeComponent implements OnInit {
         prioridade: '',
         data: '',
         situacao: '',
-      } : element
+      } : {
+        position: element.position,
+        titulo: element.titulo,
+        descricao: element.descricao,
+        responsavel: element.responsavel,
+        prioridade: element.prioridade,
+        data: element.data,
+        situacao: element.situacao,
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       // Verificando se o resultado é o mesmo quando fecha o Dialog
       if (result !== undefined) {
-        this.dataSource.push(result);  // Adicionando o result ao Array
-        this.table.renderRows();       // Atualizando a tabela
+        if (this.dataSource.map(p => p.position).includes(result.position)) { // Se no dataSource tiver a posição do resultado
+          this.dataSource[result.position - 1] = result;                      // receber o novo result no dataSource
+          this.table.renderRows();
+        } else {
+          this.dataSource.push(result);  // Adicionando o result ao Array
+          this.table.renderRows();       // Atualizando a tabela
+        }
       }
     });
   }

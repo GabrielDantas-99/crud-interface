@@ -10,6 +10,7 @@ import {Task} from 'src/app/views/home/home.component';
 export class ElementDialogComponent implements OnInit {
 
   element!: Task;
+  isChange!: boolean;
 
   constructor(
     // Injetando o valor dentro do modal
@@ -19,6 +20,11 @@ export class ElementDialogComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    if (this.data.position != null) { // Alterando o Dialog entre Criar e Editar
+      this.isChange = true;
+    } else {
+      this.isChange = false;
+    }
   }
 
   onCancel(): void {
